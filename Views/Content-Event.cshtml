@@ -1,0 +1,18 @@
+@using OrchardCore.Mvc.Utilities;
+@{
+  var contentTypeClassName = ((string)Model.ContentItem.ContentType).HtmlClassify();
+  var urlBack = "/events";
+}
+
+<style asp-src="~/Codesanook.EventManagement/styles/codesanook-event-management.css" at="Head">
+</style>
+<div class="mb-4">
+  <a href="@urlBack">
+      <i class="fa fa-chevron-left text-secondary mr-2"></i>@T["Back"]
+  </a>
+</div>
+<div class="@contentTypeClassName-content content-item -detail">
+  <div class="header-content">@await DisplayAsync(Model.Header)</div>
+  <div class="meta-content">@await DisplayAsync(Model.Meta)</div>
+  <div class="main-content">@await DisplayAsync(Model.Content)</div>
+</div>

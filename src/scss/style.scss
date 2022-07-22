@@ -1,0 +1,159 @@
+.event-list-container{
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  >.item{
+    margin: 0;
+    margin: 15px 0;
+  }
+}
+
+.card-box{
+  /* offset-x | offset-y | blur-radius | color */
+  box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.25) ;
+  border: 1px solid rgba(0,0,0,.125);
+  border-radius: 5px;;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  gap: 10px;;
+
+  &.-summary {
+  }
+
+  &.detail{
+
+  }
+
+  &.-grow {
+    //transition: all .2s ease-in-out;
+    transition: box-shadow .3s;
+
+    &:hover {
+      //transform: scale(1.01);
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5) ;
+    }
+  }
+
+  > * {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+    .meta-content {
+      margin-top: 6px;
+      width: 20%;
+      max-width: 200px;
+    }
+    .main-content{
+      width: 80%;
+      flex-shrink: 0;
+    }
+
+    gap: 20px;;
+  }
+}
+
+.content-item {
+
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  gap: 10px;;
+
+  &.-summary {
+  }
+
+  &.detail{
+
+  }
+
+  > * {
+    width: 100%;
+  }
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    flex-wrap: wrap;
+
+
+    >.meta-content {
+      margin-top: 6px;
+      max-width: 200px;
+      order: 1;
+    }
+
+    >.main-content{
+      flex-shrink: 0;
+      flex-grow: 1;
+      flex-basis: calc(100% - 200px - 20px);
+    }
+
+    gap: 20px;;
+  }
+}
+
+:root[data-theme] {
+  ul.ant-picker-ranges {
+    margin-bottom: 0;
+  }
+  button.ant-btn {
+    line-height: 1.5715;
+    border-radius: 2px;
+  } 
+}
+
+.ant-picker-dropdown {
+  .ant-picker-header-view button:not(:first-child) {
+    margin-left: 8px;
+  }
+}
+
+.ant-picker.-fullWidth {
+    width: 100%;
+}
+
+.time-period {
+  $gap: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: $gap;
+  align-items: flex-start;
+  border: 1px solid #ced4da;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  max-width: 600px;
+  position: relative;
+
+  @media (max-width: 768px) {
+    > .-fullFlex {
+      flex: 100%;
+    }
+
+    > .-halfFlex {
+      flex: calc(50% - #{$gap});
+    }
+  }
+}
+
+.add-period {
+  color: #007bff;
+  font-size: 14px;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.remove-period {
+  color: #dc3545;
+  font-size: 14px;
+  cursor: pointer;
+  position: absolute;
+  right: 15px;
+}
+
+.event-description img{
+  max-width: 100%;
+}

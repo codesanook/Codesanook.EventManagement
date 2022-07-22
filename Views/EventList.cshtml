@@ -1,0 +1,17 @@
+@model EventIndexViewModel
+@{
+  // Add class to ul tag
+  IShape list = Model.List;
+  list.Classes.Add("event-list-container");
+
+  // Add class to li tag
+  Model.List.ItemClasses.Add("item");
+}
+<style asp-src="~/Codesanook.EventManagement/styles/codesanook-event-management.css" at="Head"></style>
+
+<div>
+  @await DisplayAsync(Model.List)
+</div>
+
+@await DisplayAsync(Model.Pager)
+

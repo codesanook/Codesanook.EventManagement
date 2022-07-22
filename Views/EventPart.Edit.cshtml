@@ -1,0 +1,63 @@
+@model EventPartViewModel
+
+@functions {
+
+  private string FormatIsoString(DateTime? utcDateTime)
+  {
+    if (!utcDateTime.HasValue)
+    {
+      return null;
+    }
+
+    return utcDateTime.Value.ToString("yyyy-MM-ddTHH:mm:ss.fffZ");
+  }
+}
+
+<style asp-name="antd" at="Head" depends-on="admin"></style>
+<style asp-src="~/Codesanook.EventManagement/styles/codesanook-event-management.css" at="Head" depends-on="admin">
+</style>
+<script asp-name="React" at="Foot"></script>
+<script asp-name="ReactDOM" at="Foot" depends-on="React"></script>
+
+@* Webpack build JS to wwwroot of main project to get React.NET work *@
+<script asp-src="~/scripts/codesanook-event-management.js" at="Foot" depends-on="ReactDOM"></script>
+
+<div>
+  @Html.React(
+  "CodesanookEventManagement.DateTimePeriodPicker",
+    new { 
+      prefix = Html.NameFor(m=>m.Periods),
+      periods = Model.Periods,
+      title = T["Schedule Event"],
+      periodLabel = new {
+        date = T["Date"],
+        startTime = T["Start Time"],
+        finishTime = T["Finish Time"]
+      }
+    }
+  )
+<div>
+
+<div asp-validation-class-for="Location" class="form-group">
+  <label asp-for="Location">@T[nameof(Model.Location)]</label>
+  <textarea asp-for="Location" class="form-control"></textarea>
+  <span class="hint">@T["Location of your event"]</span>
+</div>
+
+<div asp-validation-class-for="MaxAttendees" class="form-group">
+  <label asp-for="MaxAttendees">@T[nameof(Model.MaxAttendees)]</label>
+  <input asp-for="MaxAttendees" class="form-control">
+  <span class="hint">@T["MaxAttendees of your event"]</span>
+</div>
+
+<div asp-validation-class-for="TicketPrice" class="form-group">
+  <label asp-for="TicketPrice">@T[nameof(Model.TicketPrice)]</label>
+  <input asp-for="TicketPrice" class="form-control" />
+  <span class="hint">@T["TicketPrice of your event, leave blank for a free ticket"]</span>
+</div>
+
+@{
+  // Create a shape
+  var shape = await New.InitReact();
+}
+@await DisplayAsync(shape)

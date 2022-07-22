@@ -1,0 +1,18 @@
+@* Model is zone object, not a shape *@
+@* As extension does not work unless we using here*@
+@using OrchardCore.Mvc.Utilities
+@using OrchardCore.Autoroute.Models
+
+@{
+  var contentItem = Model.ContentItem as ContentItem;
+  var contentTypeClassName = ((string)contentItem.ContentType).HtmlClassify();
+  var autoRoutePath = contentItem.As<AutoroutePart>();
+}
+
+<style asp-src="~/Codesanook.EventManagement/styles/codesanook-event-management.css" at="Head"></style>
+
+<a class="@contentTypeClassName-content card-box -summary -grow" href="@autoRoutePath.Path" title="@contentItem.DisplayText">
+  <div class="header-content">@await DisplayAsync(Model.Header)</div>
+  <div class="meta-content">@await DisplayAsync(Model.Meta)</div>
+  <div class="main-content">@await DisplayAsync(Model.Content)</div>
+</a>

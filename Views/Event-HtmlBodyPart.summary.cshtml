@@ -1,0 +1,4 @@
+@model OrchardCore.Html.ViewModels.HtmlBodyPartViewModel
+<div class="event-description">
+  @Html.Raw(Model.Html.RemoveTags(true).Ellipsize(200))
+</div>

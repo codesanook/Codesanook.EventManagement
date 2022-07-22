@@ -1,0 +1,32 @@
+@using Codesanook.EventManagement.ViewModels
+@{
+  var eventBookingEmail = Model.EventBookingEmail as EventBookingEmailViewModel;
+}
+
+<p>
+  @* Dear @eventBookingEmail.UserProfile.FirstName @eventBookingEmail.UserProfile.LastName *@
+</p>
+
+<p>
+  Thanks for your payment.
+</p>
+<p>
+  We will inform you immediately after we have verified the correctness of your payment.
+</p>
+
+<h4>
+  Your event information
+</h4>
+<ul>
+  @* <li>Event name: @eventBookingEmail.Event.Title</li>
+  <li>Start: @eventBookingEmail.Event.StartDateTimeUtc.ToString()</li>
+  <li>Finish: @eventBookingEmail.Event.FinishDateTimeUtc.ToString()</li> *@
+  <li>Location: @eventBookingEmail.Event.Location</li>
+</ul>
+
+<p>
+  Thanks,
+</p>
+<p>
+  @eventBookingEmail.SiteName
+</p>
